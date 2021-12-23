@@ -1,0 +1,74 @@
+.composition {
+    position: relative;
+    @include clearfix;
+
+    &__photo {
+        width: 55%;
+        box-shadow: 0 1.5rem 4rem rgba($color-black,0.4);
+        // border-radius: 2px;
+        position: absolute;
+        z-index: 1;
+        transition: all 0.2s;
+
+        @include respond(phone-tab) {
+            width: calc(100% / 3);
+            box-shadow: 0 1.5rem 3rem rgba($color-black,0.2);
+            position: relative;
+            float: left;
+        }
+        
+        &--p1 {
+            top: -0.2rem;
+            left: 0;
+
+            @include respond(phone-tab) {
+                top: 0;
+                transform: scale(1.4);
+            }
+        }
+        &--p2 {
+            top: 2rem;
+            right: 0;
+
+            @include respond(phone-tab) {
+                top: -1rem;
+                transform: scale(1.4);
+                z-index: 100;
+            }
+        }
+        &--p3 {
+            top: 10rem;
+            left: 20%;
+
+            @include respond(phone-tab) {
+                top: 0;
+                left: 0;
+                transform: scale(1.4);
+            }
+        }
+
+        &:hover {
+            outline-offset: 2rem;
+            outline: 1.5rem solid $color-primary;
+            // border: 1.5rem solid $color-primary;
+            transform: scale(1.05) translateY(-0.5rem);
+            box-shadow: 0 2.5rem 4rem rgba($color-black,0.5);
+            z-index: 2;
+
+            @include respond(phone-tab) {
+                outline-offset: unset;
+                outline: unset;
+                transform: scale(1.4) translateY(0);
+                box-shadow: 0 1.5rem 3rem rgba($color-black,0.2);
+            }
+        }
+    }
+
+    &:hover &__photo:not(:hover) {
+        transform: scale(0.95);
+
+        @include respond(phone-tab) {
+            transform: scale(1.4);
+        }
+    }
+}
